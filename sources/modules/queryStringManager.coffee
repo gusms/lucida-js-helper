@@ -9,7 +9,7 @@ class queryStringManager
 		
 		for param in queryString
 			t = param.split("=")
-			object[t[0]] = t[1]
+			object[t[0]] = decodeURIComponent(t[1])
 
 		return object
 

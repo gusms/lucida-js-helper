@@ -42,6 +42,18 @@
       return value;
     };
 
+    cookieManager.prototype.toObject = function() {
+      var cookie, cookies, object, t, _i, _len;
+      object = {};
+      cookies = document.cookie.split("; ");
+      for (_i = 0, _len = cookies.length; _i < _len; _i++) {
+        cookie = cookies[_i];
+        t = cookie.split("=");
+        object[t[0]] = decodeURIComponent(t[1]);
+      }
+      return object;
+    };
+
     return cookieManager;
 
   })();
@@ -62,7 +74,7 @@
       for (_i = 0, _len = queryString.length; _i < _len; _i++) {
         param = queryString[_i];
         t = param.split("=");
-        object[t[0]] = t[1];
+        object[t[0]] = decodeURIComponent(t[1]);
       }
       return object;
     };

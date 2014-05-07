@@ -34,3 +34,13 @@ class cookieManager
 		value = @get name
 		@set(name, "", -1)
 		return value
+
+	toObject: () ->
+		object = {}
+		cookies = document.cookie.split("; ")
+		
+		for cookie in cookies
+			t = cookie.split("=")
+			object[t[0]] = decodeURIComponent(t[1])
+
+		return object
