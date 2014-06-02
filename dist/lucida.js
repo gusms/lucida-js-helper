@@ -84,7 +84,7 @@
       if (queryString == null) {
         queryString = this.query;
       }
-      object = this.toObject(query);
+      object = this.toObject(queryString);
       return object[param];
     };
 

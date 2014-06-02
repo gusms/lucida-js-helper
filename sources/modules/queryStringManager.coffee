@@ -14,5 +14,5 @@ class queryStringManager
 		return object
 
 	getValue: (param, queryString = @query) ->
-		object = @toObject(query)
+		object = @toObject(queryString)
 		return object[param]
