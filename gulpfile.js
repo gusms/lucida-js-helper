@@ -11,7 +11,7 @@ var pkg     = require('./package.json'),
 	];
 
 gulp.task('build', function() {
-	gulp.src(files)
+	return gulp.src(files)
 		.pipe(concat('lucida.js'))
 		.pipe(wrapper({
 			header: '(function(window, document){\n"use strict";\n\n',
@@ -20,14 +20,8 @@ gulp.task('build', function() {
 		.pipe(gulp.dest('./dist/'))
 });
 
-gulp.task('hint', function() {
-	gulp.src('./sources/**/*.js')
-		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
-});
-
 gulp.task('min', function() {
-	gulp.src('./dist/*.js')
+	return gulp.src('./dist/*.js')
 		.pipe(concat('lucida.min.js'))
 		.pipe(uglify({outSourceMap: true}))
 		.pipe(gulp.dest('./dist/min/'))
@@ -39,4 +33,8 @@ gulp.task('release', function () {
         .pipe(gulp.dest('./release/'));
 });
 
-gulp.task('default', ['build', 'hint', 'min']);
+gulp.task('hint', function() {
+	gulp.src('./sources/**/*.js')
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))
+});
