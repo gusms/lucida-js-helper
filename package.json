@@ -1,7 +1,7 @@
 {
-  "name": "Lucida.js",
+  "name": "lucida-js-helper",
   "description": "biblioteca de suporte",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "http://lucida.com.br",
   "author": {
     "name": "Marcus Ortense",
@@ -9,8 +9,10 @@
   },
   "devDependencies": {
     "gulp": "^3.6.2",
-    "gulp-coffee": "^1.4.2",
     "gulp-concat": "^2.2.0",
-    "gulp-uglify": "^0.2.1"
+    "gulp-uglify": "0.2.1",
+    "gulp-jshint": "^1.6.1",
+    "gulp-wrapper": "^0.1.4",
+    "gulp-zip": "^0.3.4"
   }
 }
