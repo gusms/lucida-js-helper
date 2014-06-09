@@ -38,3 +38,4 @@ gulp.task('hint', function() {
 		.pipe(jshint())
 		.pipe(jshint.reporter('default'))
 });
+

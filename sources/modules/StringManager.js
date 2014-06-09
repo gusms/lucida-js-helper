@@ -11,11 +11,11 @@ var StringManager = (function() {
 			return instance;
 		}
 
-		StringManager.prototype.trimLeft = function(str) {
+		StringManager.prototype.trimRight = function(str) {
 			return str.replace(/\s+$/, '');
 		};
 
-		StringManager.prototype.trimRight = function(str) {
+		StringManager.prototype.trimLeft = function(str) {
 			return str.replace(/^\s+/, '');
 		};
 
