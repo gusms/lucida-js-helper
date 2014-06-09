@@ -22,6 +22,15 @@ var Lucida = (function() {
 			return element;
 		};
 
+		Lucida.prototype.addiFrame = function(divId, url, opt_hash) {
+			ga(function(tracker) {
+				window.linker = window.linker || new window.gaplugins.Linker(tracker);
+				var iFrame = document.createElement('iFrame');
+				iFrame.src = window.linker.decorate(url, opt_hash);
+				document.getElementById(divId).appendChild(iFrame);
+			});
+		};
+
 		return Lucida;
 
 	})();
