@@ -27,6 +27,7 @@ var Lucida = (function() {
 				window.linker = window.linker || new window.gaplugins.Linker(tracker);
 				var iFrame = document.createElement('iFrame');
 				iFrame.src = window.linker.decorate(url, opt_hash);
+				iFrame.frameBorder = 0;
 				document.getElementById(divId).appendChild(iFrame);
 			});
 		};
