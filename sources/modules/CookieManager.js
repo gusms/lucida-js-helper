@@ -45,10 +45,13 @@ var CookieManager = (function() {
 			return cookie;
 		};
 
-		CookieManager.prototype.remove = function(name) {
+		CookieManager.prototype.remove = function(name, opts) {
 			var value = this.get(name);
 
-			this.set(name, '', -1);
+			opts = opts || {};
+			opts.exdays = -1;
+
+			this.set(name, '', opts);
 			return value;
 		};
 
