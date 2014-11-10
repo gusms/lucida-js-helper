@@ -1,4 +1,4 @@
-var StringManager = (function() {
+var StringManager = (function(window) {
 		"use strict";
 		
 		var instance;
@@ -25,21 +25,34 @@ var StringManager = (function() {
 		};
 
 		StringManager.prototype.sanitize = function(str, only_word_character) {
-			str = this.trim(str)
-					.toLowerCase()    
-					.replace(/\s+/g, ' ')
-					.replace(/\s+/g, '_')
-					.replace(/[áàâãåäæª]/g, 'a')
-					.replace(/[éèêëЄ€]/g, 'e')
-					.replace(/[íìîï]/g, 'i')
-					.replace(/[óòôõöøº]/g, 'o')
-					.replace(/[úùûü]/g, 'u')
-					.replace(/[ç¢©]/g, 'c');
-			if (only_word_character) {
-				str = str.replace(/[^a-z0-9\-]/g, '_')
-						.replace(/_+/g, '_');
+			try {
+				if ( 'string' !== typeof str ) {
+					if ( window.lucida.debug && window.console && window.console.error ) {
+						window.console.error( 'Sanitize error: parameter str is ' + typeof str );
+					}
+					return '';
+				}
+				str = this.trim(str)
+						.toLowerCase()    
+						.replace(/\s+/g, ' ')
+						.replace(/\s+/g, '_')
+						.replace(/[áàâãåäæª]/g, 'a')
+						.replace(/[éèêëЄ€]/g, 'e')
+						.replace(/[íìîï]/g, 'i')
+						.replace(/[óòôõöøº]/g, 'o')
+						.replace(/[úùûü]/g, 'u')
+						.replace(/[ç¢©]/g, 'c');
+				if (only_word_character) {
+					str = str.replace(/[^a-z0-9\-]/g, '_')
+							.replace(/_+/g, '_');
+				}
+				return str;
 			}
-			return str;
+			catch(e){
+				if ( window.lucida.debug && window.console && window.console.error ) {
+					window.console.error( new Error(e.message, e.fileName, e.lineNumber) );
+				}
+			}
 		};
 
 		StringManager.prototype.replaceAll = function(str, token, newtoken) {
@@ -51,4 +64,4 @@ var StringManager = (function() {
 
 		return StringManager;
 
-	})();
+	})(window);
