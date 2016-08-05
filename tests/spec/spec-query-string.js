@@ -1,9 +1,15 @@
 describe('Modulo lucida.queryString', function() {
+	var qs
+	var p
+
+	beforeEach(function(){
+		qs = '?bla=blas&ble=bles'
+		p = 'bla'
+	})
 
 	describe('lucida.queryString.toObject', function() {
-		it('Deve retornar um objeto', function() {
-			var qs = '?bla=bla&ble=ble'
 
+		it('Deve retornar um objeto', function() {
 			expect(typeof lucida.queryString.toObject(qs)).toEqual('object')
 		})
 
@@ -12,9 +18,25 @@ describe('Modulo lucida.queryString', function() {
 		})
 
 		it('Deve conter todos os parâmetros da url', function() {
-			var qs = '?bla=bla&ble=ble'
+			expect(JSON.stringify(lucida.queryString.toObject(qs))).toEqual('{"bla":"blas","ble":"bles"}')
+		})
 
-			expect(JSON.stringify(lucida.queryString.toObject(qs))).toEqual('{"bla":"bla","ble":"ble"}')
+		it('Deve verificar se decoda os valores dos parâmetros', function() {
+			var qs2 = '?bla=blas&ble=bles&bli=cora%C3%A7%C3%A3o%20felpudo&frango=p%C3%A3o'
+
+			expect(JSON.stringify(lucida.queryString.toObject(qs2))).toEqual('{"bla":"blas","ble":"bles","bli":"coração felpudo","frango":"pão"}')
+		})
+
+	})
+
+	describe('lucida.queryString.getValue', function() {
+
+		it('Deve retornar uma string', function(){
+			expect(typeof lucida.queryString.getValue(p, qs)).toEqual('string')
+		})
+
+		it('Deve retornar o valor do parâmetro', function() {
+			expect(lucida.queryString.getValue(p, qs)).toEqual('blas')
 		})
 	})
 
