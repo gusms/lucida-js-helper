@@ -30,4 +30,34 @@ describe('Modulo lucida.string', function() {
 
     })
 
+    describe('lucida.string.trimRight', function() {
+
+        it('Deve retornar uma string sem espaço á direita', function() {
+            var str = 'yellow belt     ';
+            expect(lucida.string.trimRight(str)).toEqual('yellow belt')
+        })
+
+    })
+
+    describe('lucida.string.trimLeft', function() {
+
+        it('Deve retornar uma string sem espaço á esquerda', function() {
+            var str = ' yellow belt';
+            expect(lucida.string.trimLeft(str)).toEqual('yellow belt')
+        })
+
+    })
+
+    describe('lucida.string.replaceAll', function() {
+
+        it('Deve retornar uma string que substitua todos os caracteres indesejados por desejáveis', function() {
+            var str = '__yellow belt__yellow belt__'
+            var token = '_'
+            var newtoken = ' '
+            expect(lucida.string.replaceAll(str, token, newtoken)).toEqual('  yellow belt  yellow belt  ')
+        })
+
+    })
+
+
 })
