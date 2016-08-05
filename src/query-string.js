@@ -17,13 +17,8 @@ lucida.queryString.toObject = function (queryString) {
 
 lucida.queryString.getValue = function(param, queryString) {
 
-	var object;
-			if (queryString === null) {
-				queryString = this.query;
-			}
-			object = this.toObject(queryString);
-	return object[param];
+	queryString = queryString || document.location.search
+	var object = lucida.queryString.toObject(queryString)
 
-	// return 'blas'
+	return object[param]
 }
-
