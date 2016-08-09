@@ -50,7 +50,7 @@ describe('Módulo: lucida.cookie', function() {
 
         afterEach(function() {
             document.cookie = 'yellow=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-            document.cookie = 'yellow2=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+            document.cookie = 'yellow2=; expires=Thu, 01 Jan 1971 00:00:01 GMT;'
         })
 
         it('Deve criar um cookie', function() {
@@ -113,8 +113,6 @@ describe('Módulo: lucida.cookie', function() {
         beforeEach(function() {
             document.cookie = 'yellow=belt; '
             document.cookie = 'yellow2=belt2; '
-            document.cookie = '=belt2; '
-
         })
 
         afterEach(function() {
@@ -131,16 +129,21 @@ describe('Módulo: lucida.cookie', function() {
         it('Deve retornar null quando não houver cookies', function(){
             document.cookie = 'yellow=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
             document.cookie = 'yellow2=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-            var cookies = document.cookie.split(";");
 
-    for (var i = 0; i < cookies.length; i++) {
-    	var cookie = cookies[i];
-    	var eqPos = cookie.indexOf("=");
-    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+            	var cookie = cookies[i];
+            	var eqPos = cookie.indexOf("=");
+            	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+
             expect(lucida.cookie.toObject()).toBeNull()
         })
+
+        it('Deve conter todos os cookies dentro do objeto', function() {
+			expect(JSON.stringify(lucida.cookie.toObject())).toEqual('{"yellow":"belt","yellow2":"belt2"}')
+		})
 
     })
 
