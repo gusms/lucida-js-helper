@@ -1,18 +1,26 @@
 {
   "name": "lucida-js-helper",
   "description": "biblioteca de suporte",
-  "version": "0.1.1",
+  "version": "2.0.0",
   "homepage": "http://lucida.com.br",
-  "author": {
-    "name": "Marcus Ortense",
-    "email": "marcus.ortense@outlook.com"
-  },
+  "author": "Lúcida Tech Team <avengers@lucida.com.br>",
   "devDependencies": {
-    "gulp": "^3.6.2",
-    "gulp-concat": "^2.2.0",
-    "gulp-uglify": "0.2.1",
-    "gulp-jshint": "^1.6.1",
-    "gulp-wrapper": "^0.1.4",
-    "gulp-zip": "^0.3.4"
-  }
+    "static-server": "^2.0.3"
+  },
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "static-server ./ -p 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucida-brasil/lucida-js-helper.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucida-brasil/lucida-js-helper/issues"
+  },
+  "dependencies": {}
 }
