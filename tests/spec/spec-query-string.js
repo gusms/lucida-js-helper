@@ -55,6 +55,12 @@ describe('Modulo lucida.queryString', function() {
 
 			expect(lucida.queryString.getValue(p3, qs)).toEqual('')
 		})
+
+		it('Deve retornar uma string em branco caso não exista valor', function() {
+			var qs3 = '?bla='
+
+			expect(lucida.queryString.getValue(p, qs3)).toEqual('')
+		})
 	})
 
 })
