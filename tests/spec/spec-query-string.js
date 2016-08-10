@@ -38,6 +38,23 @@ describe('Modulo lucida.queryString', function() {
 		it('Deve retornar o valor do parâmetro', function() {
 			expect(lucida.queryString.getValue(p, qs)).toEqual('blas')
 		})
+
+		it('Deve retornar o valor do parâmetro decodificado', function() {
+			var p2 = 'bli'
+			var qs2 = '?bla=blas&ble=bles&bli=cora%C3%A7%C3%A3o%20felpudo&frango=p%C3%A3o'
+
+			expect(lucida.queryString.getValue(p2, qs2)).toEqual('coração felpudo')
+		})
+
+		it('Deve retornar valor do primeiro parâmetro sem interferência do caracter "?"', function() {
+			expect(lucida.queryString.getValue(p, qs)).toEqual('blas')
+		})
+
+		it('Deve retornar uma string em branco caso não exista o parâmetro', function() {
+			var p3 = 'outro'
+
+			expect(lucida.queryString.getValue(p3, qs)).toEqual('')
+		})
 	})
 
 })
