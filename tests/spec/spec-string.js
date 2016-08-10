@@ -1,4 +1,4 @@
-describe('Módulo: lucida.string', function() {
+describe('Modulo lucida.string', function() {
 
     describe('lucida.string.sanitize', function() {
 
