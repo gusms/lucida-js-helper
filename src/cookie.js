@@ -1,5 +1,3 @@
-'use strict'
-
 lucida.cookie = {}
 
 lucida.cookie.get = function(key) {
@@ -64,4 +62,4 @@ lucida.cookie.toObject = function() {
     }
 
     return null
-};
+}

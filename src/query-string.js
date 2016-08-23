@@ -30,7 +30,4 @@ lucida.queryString.getValue = function(param, queryString) {
 		})
 
 	return value
-
-	// var object = lucida.queryString.toObject(queryString)
-	// return object[param]
 }

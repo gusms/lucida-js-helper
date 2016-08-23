@@ -5,6 +5,8 @@
   "homepage": "http://lucida.com.br",
   "author": "Lúcida Tech Team <avengers@lucida.com.br>",
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
     "static-server": "^2.0.3"
   },
   "main": "gulpfile.js",

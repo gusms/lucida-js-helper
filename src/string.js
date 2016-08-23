@@ -1,5 +1,3 @@
-'use strict'
-
 lucida.string = {}
 
 lucida.string.sanitize = function(str, only_word_character) {
